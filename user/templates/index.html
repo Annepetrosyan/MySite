@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+    {% block content %}
+    {% block carousel %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="{% url 'home' %}" class="active" id="login-form-link">Login</a>
+							</div>
+							<div class="col-xs-6">
+								<a href="{% url 'registration' %}"  id="register-form-link">Register</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="login-form"  method="post" role="form" style="display: block;">{% csrf_token %}
+									<div class="form-group">
+										{{login_form.username}}
+									</div>
+									<div class="form-group">
+										{{login_form.password}}
+									</div>
+									<div class="form-group text-center">
+										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+										<label for="remember"> Remember Me</label>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+											</div>
+										</div>
+									</div>
+
+								</form>
+								<form id="register-form"  method="post" role="form" style="display: none;">{% csrf_token %}
+									<div class="form-group">
+										{{registration_form.username}}
+									</div>
+									<div class="form-group">
+										{{registration_form.last_name }}
+									</div>
+									<div class="form-group">
+										{{registration_form.first_name }}
+									</div>
+									<div class="form-group">
+										{{registration_form.email }}
+
+									</div>
+									<div class="form-group">
+										{{registration_form.password1 }}
+
+									</div>
+									<div class="form-group">
+										{{registration_form.password2 }}
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+            <!-- Carousel End -->
+    {% endblock %}
+    {% block feature %}
+
+    {% endblock %}
+    {% block About %}
+
+    {% endblock %}
+    {% block fact %}
+
+    {% endblock %}
+    {% block service %}
+
+    {% endblock %}
+    {% block team %}
+
+    {% endblock %}
+    {% block faqs %}
+
+    {% endblock %}
+    {% block testimonial %}
+
+    {% endblock %}
+    {% block blog %}
+            <!-- Blog Start -->
+            <div class="blog">
+                <div class="container">
+                    <div class="section-header text-center">
+                        <p>Latest Blog</p>
+                        <h2>Latest From Our Blog</h2>
+                    </div>
+                    <div class="row">
+                        {% for projects in project %}
+                        {% if projects.id < 4 %}
+                        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="blog-item">
+                                <div class="blog-img">
+                                    <img src="{{projects.image.url}}" alt="Image">
+                                </div>
+                                <div class="blog-title">
+                                    <h3>{{projects.project_name}}</h3>
+                                    <a class="btn" href="">+</a>
+                                </div>
+                                <div class="blog-meta">
+                                    <p>By<a href="">Admin</a></p>
+                                    <p>In<a href="">Construction</a></p>
+                                </div>
+                                <div class="blog-text">
+                                    <p>
+                                        {{projects.content}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                       {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <!-- Blog End -->
+    {% endblock %}
+    {% endblock %}
+
